@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"tshockau/logger"
 )
 
 func Unpack(file string, out string) error {
@@ -17,6 +18,7 @@ func Unpack(file string, out string) error {
 }
 
 func Unzip(file string, out string) error {
+	logger.Info("Unpacking " + file)
 	zf, err := zip.OpenReader(file)
 	if err != nil {
 		return err
@@ -25,6 +27,8 @@ func Unzip(file string, out string) error {
 
 	for _, f := range zf.File {
 		path := filepath.Join(out, f.Name)
+
+		logger.Info("Extracting " + path)
 
 		if f.FileInfo().IsDir() {
 			os.Mkdir(path, os.ModePerm)

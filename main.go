@@ -1,14 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"tshockau/git"
-	"tshockau/ziper"
+	"tshockau/tshock"
 )
 
 func main() {
-	s := git.GetVersion()
-	err := git.Download(s, "test.zip")
-	fmt.Println(err)
-	ziper.Unpack("test.zip", ".")
+	tshock.Update()
 }
