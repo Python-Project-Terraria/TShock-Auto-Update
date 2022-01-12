@@ -34,7 +34,7 @@ func GetVersion() string {
 
 	var urllist []string
 	for _, v := range reg.FindAllString(string(b), -1) {
-		urllist = append(urllist, "https://github.com/Pryaxis/TShock/releases/download"+v+".zip")
+		urllist = append(urllist, "https://github.com/"+v)
 	}
 
 	return urllist[0]
