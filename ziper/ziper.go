@@ -7,6 +7,15 @@ import (
 	"path/filepath"
 )
 
+func Unpack(file string, out string) error {
+	err := Unzip(file, out)
+	if err != nil {
+		return err
+	}
+	defer os.Remove(file)
+	return nil
+}
+
 func Unzip(file string, out string) error {
 	zf, err := zip.OpenReader(file)
 	if err != nil {
