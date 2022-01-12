@@ -1,4 +1,4 @@
-# TShock Auto Update
+# TShock Auto Update (WIP DO NOT USE YET)
 > Updated and manages TShock automatically with configurable settings
 
 # Features
