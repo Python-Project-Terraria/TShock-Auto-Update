@@ -9,7 +9,7 @@ import (
 )
 
 var tshockurl string = "https://github.com/Pryaxis/TShock/releases"
-var regexurl string = "\\/Pryaxis\\/TShock\\/releases\\/download\\/v[0-9].[0-9].[0-9][0-9]\\/TShock[0-9].[0-9].[0-9][0-9]_Terraria[0-9].[0-9].[0-9].[0-9].zip"
+var regexurl string = "\\/Pryaxis\\/TShock\\/releases\\/download\\/(.+).zip"
 
 func GetVersion() string {
 	reg, err := regexp.Compile(regexurl)
