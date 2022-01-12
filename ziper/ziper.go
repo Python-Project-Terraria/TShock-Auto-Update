@@ -12,7 +12,7 @@ func Unpack(file string, out string) error {
 	if err != nil {
 		return err
 	}
-	defer os.Remove(file)
+	os.Remove(file)
 	return nil
 }
 
