@@ -3,6 +3,7 @@ package git
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"regexp"
 )
@@ -34,8 +35,28 @@ func GetVersion() string {
 
 	var urllist []string
 	for _, v := range reg.FindAllString(string(b), -1) {
-		urllist = append(urllist, "https://github.com/"+v)
+		urllist = append(urllist, "https://github.com"+v)
 	}
 
 	return urllist[0]
+}
+
+func Download(url string, out string) error {
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	err = ioutil.WriteFile(out, bytes, 0644)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

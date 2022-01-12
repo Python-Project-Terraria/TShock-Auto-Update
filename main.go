@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"tshockau/git"
+	"tshockau/ziper"
 )
 
 func main() {
 	s := git.GetVersion()
-	fmt.Println(s)
+	err := git.Download(s, "test.zip")
+	fmt.Println(err)
+	ziper.Unzip("test.zip", ".")
+	os.Remove("test.zip")
 }
